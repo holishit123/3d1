@@ -1,0 +1,21 @@
+body {
+  background-color: #171717 !important;
+}
+
+h1 {
+  color: #fff !important;
+}
+
+#list-comic {
+  padding: 20px; /* Optional: add padding to the container */
+}
+
+.comic-wrapper {
+  margin-bottom: 20px; /* Space between comic wrappers */
+}
+
+.comic-wrapper img {
+  width: 100%; /* Make the image responsive */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Remove any extra space below the image */
+}
