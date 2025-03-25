@@ -1,0 +1,147 @@
+/* Tổng quan */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+/* Tiêu đề */
+h1 {
+  color: #333;
+  margin: 20px 0;
+}
+
+/* Danh sách truyện */
+.comic-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+}
+
+/* Mỗi truyện */
+.comic {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  max-width: 180px;
+}
+
+.comic:hover {
+  transform: scale(1.05);
+}
+
+/* Ảnh bìa truyện */
+.thumbnail {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.thumbnail:hover {
+  opacity: 0.8;
+}
+
+/* Tên truyện */
+.comic p {
+  margin: 5px 0 0;
+  font-weight: bold;
+  color: #555;
+}
+
+/* Trình xem truyện */
+.image-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow: hidden; /* Ngăn trình xem tràn ra ngoài */
+}
+
+/* Tiêu đề truyện */
+#comicTitle {
+  margin-bottom: 20px;
+}
+
+/* Khu vực hiển thị ảnh */
+#imageList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  overflow-y: auto; /* Thêm thanh cuộn dọc */
+  max-height: 90vh; /* Giới hạn chiều cao */
+  width: 100%; /* Đảm bảo danh sách ảnh chiếm toàn bộ chiều rộng */
+  padding: 10px;
+}
+
+/* Ảnh trang truyện */
+#imageList img {
+  width: 100%; /* Chiếm toàn bộ chiều rộng màn hình */
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+/* Nút đóng */
+button {
+  background-color: red;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+}
+
+button:hover {
+  background-color: darkred;
+}
+
+/* Đáp ứng cho điện thoại */
+@media (max-width: 600px) {
+  .image-container {
+    padding: 0;
+  }
+  .comic-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .comic {
+    width: 100%; /* Đảm bảo mỗi truyện chiếm toàn bộ chiều rộng */
+    max-width: none;
+  }
+
+  .thumbnail {
+    width: 100%; /* Ảnh bìa full chiều rộng */
+    height: auto;
+  }
+
+  #imageList {
+    max-height: 85vh;
+  }
+
+  #imageList img {
+    width: 100%;
+  }
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Truyện tranh</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Danh sách truyện</h1>
+    <div id="comicsList" class="comic-container"></div>
+
+    <div id="comicViewer" class="image-container">
+      <button onclick="closeViewer()">Đóng</button>
+      <h2 id="comicTitle"></h2>
+      <div id="imageList"></div>
+    </div>
+
+    <script src="comics.js"></script>
+    <script>
+      const comicsList = document.getElementById("comicsList");
+      const comicViewer = document.getElementById("comicViewer");
+      const comicTitle = document.getElementById("comicTitle");
+      const imageList = document.getElementById("imageList");
+
+      function loadComics() {
+        // Sắp xếp truyện theo tên (A-Z)
+        // comics.sort((a, b) => a.name.localeCompare(b.name));
+
+        comics.forEach((comic, index) => {
+          const div = document.createElement("div");
+          div.classList.add("comic");
+          div.innerHTML = `
+            <img src="${comic.thumbnail}" class="thumbnail" onclick="showComic(${index})">
+            <p>${comic.name}</p>
+        `;
+          comicsList.appendChild(div);
+        });
+      }
+
+      function showComic(index) {
+        const comic = comics[index];
+        comicViewer.style.display = "flex"; // Hiển thị trình xem truyện
+        comicTitle.textContent = comic.name;
+        imageList.innerHTML = comic.images
+          .map((img) => `<img src="${img}">`)
+          .join("");
+
+        // Cuộn lên đầu khi mở truyện
+        imageList.scrollTop = 0;
+      }
+
+      function closeViewer() {
+        comicViewer.style.display = "none";
+      }
+
+      loadComics();
+    </script>
+  </body>
+</html>
